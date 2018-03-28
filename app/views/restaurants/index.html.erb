@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>All Restaurants</h1>
+  <div class="row">
+    <% @restaurants.each do |restaurant|%>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= restaurant.picture.present? ? "#{restaurant.picture}?id=#{rand(1..100)}" : ''; %>');">
+          <div class="card-category"><%= restaurant.category %></div>
+          <div class="card-description">
+            <h2><%= restaurant.name %></h2>
+            <p><%= restaurant.phone_number %></p>
+          </div>
+          <%= link_to 'View More', restaurant_path(restaurant), class: 'card-link' %>
+        </div>
+
+      </div>
+    <% end %>
+
+  </div>
+</div>
+

@@ -1,0 +1,26 @@
+<div class="container">
+  <h1><%= "#{@restaurant.name} / #{@restaurant.category}" %></h1>
+  <h4><%= @restaurant.address %></h4>
+
+
+  <div class="row">
+    <div class="col-md-2">
+      <%= image_tag(@restaurant.picture, size: '120x120') if @restaurant.picture.present? %>
+    </div>
+    <div class="col-md-10"><%= @restaurant.description %></div>
+  </div>
+
+
+  <h2>Add a Review</h2>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content  %>
+    <%= f.submit class: 'btn btn-success' %>
+  <% end %>
+
+
+  <ul>
+    <% @reviews.each do |review| %>
+      <li><%= review.content %></li>
+    <% end %>
+  </ul>
+</div>
